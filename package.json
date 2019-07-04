@@ -4,13 +4,14 @@
   "description": "Responsive React grid system built with styled-components",
   "main": "dist/index.js",
   "scripts": {
-    "prepublish": "babel src -d dist",
+    "prepublish": "npm run snyk-protect; babel src -d dist",
     "test": "nyc ava",
     "cover": "nyc report --reporter=lcov --reporter=html",
     "start": "x0 dev docs/App.js",
     "docs": "x0 build docs/App.js -d docs --cssLibrary='styled-components' --basename='/grid-styled'",
     "icon-dev": "repng docs/Icon.js --dev",
-    "icon": "repng docs/Icon.js -d 2000 -w 768 -h 768 -o docs -f icon"
+    "icon": "repng docs/Icon.js -d 2000 -w 768 -h 768 -o docs -f icon",
+    "snyk-protect": "snyk protect"
   },
   "keywords": [
     "react",
@@ -43,12 +44,14 @@
   },
   "dependencies": {
     "styled-components": ">=2.0 || >=3.0",
-    "styled-system": "^1.1.1"
+    "styled-system": "^1.1.1",
+    "snyk": "^1.189.0"
   },
   "ava": {
     "require": [
       "babel-register"
     ],
     "babel": "inherit"
-  }
+  },
+  "snyk": true
 }
